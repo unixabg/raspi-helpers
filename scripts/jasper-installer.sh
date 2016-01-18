@@ -71,6 +71,7 @@ cd ~/is2013-conversion/phonetisaurus/src/
 make
 cd ~/g014b2b/
 ./compile-fst.sh
+cd
 mv ~/g014b2b ~/phonetisaurus
 sudo cp ~/m2m-aligner-1.2/m2m-aligner /usr/local/bin/m2m-aligner
 sudo cp ~/is2013-conversion/bin/phonetisaurus-g2p /usr/local/bin/phonetisaurus-g2p
