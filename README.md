@@ -12,9 +12,21 @@
 
 ##### Boot the fresh install
 
-##### Expand to use entire disk with and select to reboot now when prompted
+##### Expand for raspbian to use entire disk with
+##### (select to reboot now when prompted)
 
 `sudo raspi-config`
+
+##### Upon reboot clone raspi-helpers
+
+`sudo apt-get install git --yes`
+
+`cd && git clone https://github.com/unixabg/raspi-helpers.git`
+
+##### Run the script and this can take several hours
+
+`~/raspi-helpers/scripts/jasper-installer.sh`
+
 
 FIXME
 
