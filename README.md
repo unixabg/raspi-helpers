@@ -17,11 +17,12 @@
 
 `sudo raspi-config`
 
-##### Upon reboot clone raspi-helpers
+##### Upon reboot you could clone the repository or just download the script
+##### Below is if you want to download the script
 
-`sudo apt-get install git --yes`
+`wget https://raw.githubusercontent.com/unixabg/raspi-helpers/master/scripts/jasper-installer.sh`
 
-`cd && git clone https://github.com/unixabg/raspi-helpers.git`
+`chmod +x jasper-installer.sh`
 
 ##### Run the script and this can take several hours
 
