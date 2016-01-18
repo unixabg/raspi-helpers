@@ -25,6 +25,9 @@ PATH=$PATH:/usr/local/lib/
 export PATH
 EOT
 
+# Source in the .bashrc for the script
+. /home/pi/.bashrc
+
 # Download and extract packages for STT
 # The Pocketsphinx STT engine requires the MIT Language Modeling Toolkit,
 # m2m-aligner, Phonetisaurus and OpenFST
@@ -38,13 +41,13 @@ wget https://phonetisaurus.googlecode.com/files/is2013-conversion.tgz
 wget https://www.dropbox.com/s/kfht75czdwucni1/g014b2b.tgz
 svn co https://svn.code.sf.net/p/cmusphinx/code/trunk/cmuclmtk/
 git clone https://github.com/jasperproject/jasper-client.git jasper
-tar xf sphinxbase-0.8.tar.gz
-tar xf pocketsphinx-0.8.tar.gz
-tar xf m2m-aligner-1.2.tar.gz
-tar xf openfst-1.3.4.tar.gz
-tar xf is2013-conversion.tgz
-tar xf mitlm-0.4.1.tar.gz
-tar xf g014b2b.tgz
+tar xvf sphinxbase-0.8.tar.gz
+tar xvf pocketsphinx-0.8.tar.gz
+tar xvf m2m-aligner-1.2.tar.gz
+tar xvf openfst-1.3.4.tar.gz
+tar xvf is2013-conversion.tgz
+tar xvf mitlm-0.4.1.tar.gz
+tar xvf g014b2b.tgz
 
 # Install Speech-To-Text Engine Pocketsphinx and CMUCLMTK
 cd ~/sphinxbase-0.8/
