@@ -10,9 +10,9 @@
 ###### Flush any writes pending.
 `sudo sync`
 
-#### Boot the fresh install
+##### Boot the fresh install
 
-#### Expand to use entire disk with and select to reboot now when prompted
+##### Expand to use entire disk with and select to reboot now when prompted
 
 `sudo raspi-config`
 
