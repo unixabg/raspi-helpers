@@ -26,7 +26,7 @@
 
 ##### Run the script and this can take several hours
 
-`~/raspi-helpers/scripts/jasper-installer.sh`
+`~/jasper-installer.sh`
 
 
 FIXME
