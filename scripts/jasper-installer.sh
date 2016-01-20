@@ -98,6 +98,11 @@ sudo pip install --upgrade setuptools
 sudo pip install -r ~/jasper/client/requirements.txt
 chmod +x jasper/jasper.py
 
+echo "$(date) - Adding support for Google STT..." >> ~/jasper-installer.log
+# Adding support for Google STT
+sudo apt-get install python-pymad --yes
+sudo pip install --upgrade gTTS
+
 ## Modify the CHUNK in jasper/client/mic.py
 #sed -i.bak -e's/1024/768/' ~/jasper/client/mic.py
 
