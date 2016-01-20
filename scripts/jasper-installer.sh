@@ -87,8 +87,8 @@ sudo cp ~/m2m-aligner-1.2/m2m-aligner /usr/local/bin/m2m-aligner
 sudo cp ~/is2013-conversion/bin/phonetisaurus-g2p /usr/local/bin/phonetisaurus-g2p
 #sudo reboot
 
-echo "$(date) - Install Jaspers and requirements..." >> ~/jasper-installer.log
-# Install Jaspers and requirements
+echo "$(date) - Install Jasper requirements..." >> ~/jasper-installer.log
+# Install Jasper requirements
 # First upgrade pip
 sudo easy_install pip
 
