@@ -56,51 +56,62 @@ tar xvf is2013-conversion.tgz
 tar xvf mitlm-0.4.1.tar.gz
 tar xvf g014b2b.tgz
 
-echo "$(date) - Install Speech-To-Text Engine Pocketsphinx and CMUCLMTK..." >> ~/jasper-installer.log
 # Install Speech-To-Text Engine Pocketsphinx and CMUCLMTK
+echo "$(date) - Building sphinxbase-0.8..." >> ~/jasper-installer.log
 cd ~/sphinxbase-0.8/
 ./configure --enable-fixed
 make -j4
 sudo make install
+echo "$(date) - Completed building and installing sphinxbase-0.8..." >> ~/jasper-installer.log
 
+echo "$(date) - Building pocketshinx-0.8..." >> ~/jasper-installer.log
 cd ~/pocketsphinx-0.8/
 ./configure
 make -j4
 sudo make install
+echo "$(date) - Completed building and installing pocketshinx-0.8..." >> ~/jasper-installer.log
 
+echo "$(date) - Building cmuclmtk..." >> ~/jasper-installer.log
 cd ~/cmuclmtk/
 sudo ./autogen.sh
 make -j4
 sudo make install
+echo "$(date) - Completed building and installing cmuclmtk..." >> ~/jasper-installer.log
 
-echo "$(date) - Install OpenFST..." >> ~/jasper-installer.log
 # Install OpenFST
+echo "$(date) - Building openfst-1.3.4..." >> ~/jasper-installer.log
 cd ~/openfst-1.3.4/
 ./configure --enable-compact-fsts --enable-const-fsts --enable-far --enable-lookahead-fsts --enable-pdt
 make -j4
 sudo make install
+echo "$(date) - Completed building and installing openfst-1.3.4..." >> ~/jasper-installer.log
 
-echo "$(date) - Install M2M, MITLMT, Phonetisaurus and Phonetisaurus FST..." >> ~/jasper-installer.log
 # Install M2M, MITLMT, Phonetisaurus and Phonetisaurus FST
+echo "$(date) - Building m2m-aligner-1.2..." >> ~/jasper-installer.log
 cd ~/m2m-aligner-1.2/
 make -j4
+sudo cp ~/m2m-aligner-1.2/m2m-aligner /usr/local/bin/m2m-aligner
+echo "$(date) - Completed building and installing m2m-aligner-1.2..." >> ~/jasper-installer.log
 
+echo "$(date) - Building mitlm-0.4.1..." >> ~/jasper-installer.log
 cd ~/mitlm-0.4.1/
 ./configure
 make -j4
 sudo make install
+echo "$(date) - Completed building and installing mitlm-0.4.1..." >> ~/jasper-installer.log
 
+echo "$(date) - Building is2013-conversion..." >> ~/jasper-installer.log
 cd ~/is2013-conversion/phonetisaurus/src/
-make
+make -j4
+sudo cp ~/is2013-conversion/bin/phonetisaurus-g2p /usr/local/bin/phonetisaurus-g2p
+echo "$(date) - Completed building and installing is2013-conversion..." >> ~/jasper-installer.log
 
+echo "$(date) - Building g014b2b..." >> ~/jasper-installer.log
 cd ~/g014b2b/
 ./compile-fst.sh
 cd
-
 mv ~/g014b2b ~/phonetisaurus
-sudo cp ~/m2m-aligner-1.2/m2m-aligner /usr/local/bin/m2m-aligner
-sudo cp ~/is2013-conversion/bin/phonetisaurus-g2p /usr/local/bin/phonetisaurus-g2p
-#sudo reboot
+echo "$(date) - Completed building and installing g014b2b..." >> ~/jasper-installer.log
 
 echo "$(date) - Install Jasper requirements..." >> ~/jasper-installer.log
 # Install Jasper requirements
