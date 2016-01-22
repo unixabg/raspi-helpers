@@ -59,30 +59,44 @@ tar xvf g014b2b.tgz
 echo "$(date) - Install Speech-To-Text Engine Pocketsphinx and CMUCLMTK..." >> ~/jasper-installer.log
 # Install Speech-To-Text Engine Pocketsphinx and CMUCLMTK
 cd ~/sphinxbase-0.8/
-./configure --enable-fixed && make -j4 && sudo make install
+./configure --enable-fixed
+make -j4
+sudo make install
+
 cd ~/pocketsphinx-0.8/
-./configure && make -j4 && sudo make install
+./configure
+make -j4
+sudo make install
+
 cd ~/cmuclmtk/
-sudo ./autogen.sh && sudo make -j4 && sudo make install
+sudo ./autogen.sh
+make -j4
+sudo make install
 
 echo "$(date) - Install OpenFST..." >> ~/jasper-installer.log
 # Install OpenFST
 cd ~/openfst-1.3.4/
-sudo ./configure --enable-compact-fsts --enable-const-fsts --enable-far --enable-lookahead-fsts --enable-pdt
-sudo make -j4
+./configure --enable-compact-fsts --enable-const-fsts --enable-far --enable-lookahead-fsts --enable-pdt
+make -j4
 sudo make install
 
 echo "$(date) - Install M2M, MITLMT, Phonetisaurus and Phonetisaurus FST..." >> ~/jasper-installer.log
 # Install M2M, MITLMT, Phonetisaurus and Phonetisaurus FST
 cd ~/m2m-aligner-1.2/
-sudo make -j4
+make -j4
+
 cd ~/mitlm-0.4.1/
-sudo ./configure && sudo make install
+./configure
+make -j4
+sudo make install
+
 cd ~/is2013-conversion/phonetisaurus/src/
 make
+
 cd ~/g014b2b/
 ./compile-fst.sh
 cd
+
 mv ~/g014b2b ~/phonetisaurus
 sudo cp ~/m2m-aligner-1.2/m2m-aligner /usr/local/bin/m2m-aligner
 sudo cp ~/is2013-conversion/bin/phonetisaurus-g2p /usr/local/bin/phonetisaurus-g2p
