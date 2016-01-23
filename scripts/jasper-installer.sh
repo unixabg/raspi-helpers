@@ -73,7 +73,7 @@ echo "$(date) - Completed building and installing pocketshinx-0.8..." >> ~/jaspe
 
 echo "$(date) - Building cmuclmtk..." >> ~/jasper-installer.log
 cd ~/cmuclmtk/
-sudo ./autogen.sh
+./autogen.sh
 make -j2
 sudo make install
 echo "$(date) - Completed building and installing cmuclmtk..." >> ~/jasper-installer.log
