@@ -82,7 +82,7 @@ echo "$(date) - Completed building and installing cmuclmtk..." >> ~/jasper-insta
 echo "$(date) - Building openfst-1.3.4..." >> ~/jasper-installer.log
 cd ~/openfst-1.3.4/
 ./configure --enable-compact-fsts --enable-const-fsts --enable-far --enable-lookahead-fsts --enable-pdt
-make -j4
+make
 sudo make install
 echo "$(date) - Completed building and installing openfst-1.3.4..." >> ~/jasper-installer.log
 
