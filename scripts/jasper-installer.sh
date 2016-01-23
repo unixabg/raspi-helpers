@@ -60,21 +60,21 @@ tar xvf g014b2b.tgz
 echo "$(date) - Building sphinxbase-0.8..." >> ~/jasper-installer.log
 cd ~/sphinxbase-0.8/
 ./configure --enable-fixed
-make -j4
+make -j2
 sudo make install
 echo "$(date) - Completed building and installing sphinxbase-0.8..." >> ~/jasper-installer.log
 
 echo "$(date) - Building pocketshinx-0.8..." >> ~/jasper-installer.log
 cd ~/pocketsphinx-0.8/
 ./configure
-make -j4
+make -j2
 sudo make install
 echo "$(date) - Completed building and installing pocketshinx-0.8..." >> ~/jasper-installer.log
 
 echo "$(date) - Building cmuclmtk..." >> ~/jasper-installer.log
 cd ~/cmuclmtk/
 sudo ./autogen.sh
-make -j4
+make -j2
 sudo make install
 echo "$(date) - Completed building and installing cmuclmtk..." >> ~/jasper-installer.log
 
@@ -89,20 +89,20 @@ echo "$(date) - Completed building and installing openfst-1.3.4..." >> ~/jasper-
 # Install M2M, MITLMT, Phonetisaurus and Phonetisaurus FST
 echo "$(date) - Building m2m-aligner-1.2..." >> ~/jasper-installer.log
 cd ~/m2m-aligner-1.2/
-make -j4
+make -j2
 sudo cp ~/m2m-aligner-1.2/m2m-aligner /usr/local/bin/m2m-aligner
 echo "$(date) - Completed building and installing m2m-aligner-1.2..." >> ~/jasper-installer.log
 
 echo "$(date) - Building mitlm-0.4.1..." >> ~/jasper-installer.log
 cd ~/mitlm-0.4.1/
 ./configure
-make -j4
+make -j2
 sudo make install
 echo "$(date) - Completed building and installing mitlm-0.4.1..." >> ~/jasper-installer.log
 
 echo "$(date) - Building is2013-conversion..." >> ~/jasper-installer.log
 cd ~/is2013-conversion/phonetisaurus/src/
-make -j4
+make -j2
 sudo cp ~/is2013-conversion/bin/phonetisaurus-g2p /usr/local/bin/phonetisaurus-g2p
 echo "$(date) - Completed building and installing is2013-conversion..." >> ~/jasper-installer.log
 
