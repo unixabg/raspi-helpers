@@ -2,20 +2,9 @@
 ## Scripts to assist some tasks on the Raspberry Pi 2.
 
 ### scripts/jasper-installer.sh
-##### Install Raspbian Lite something like the following
-###### ** Where /dev/sdX is your target (BE CAREFUL) **
-
-`sudo dd if=/path/to/raspbian/image/2015-11-21-raspbian-jessie-lite.img of=/dev/sdX bs=2M`
-
-###### Flush any writes pending.
-`sudo sync`
-
-##### Boot the fresh install
-
-##### Expand for raspbian to use entire disk with
-##### (select to reboot now when prompted)
-
-`sudo raspi-config`
+##### Script to assist installing Jasper on Raspbian Lite
+#### Tested on a fresh install of Jessie Raspbian Lite
+#### Expand for raspbian to use entire disk with
 
 ##### Upon reboot you could clone the repository or just download the script
 ##### Below is if you want to download the script
