@@ -143,9 +143,9 @@ echo "$(date) - Populate the ~/.jasper/FIXME..." >> ~/jasper-installer.log
 cd ~/jasper/client
 python populate.py
 
-echo "$(date) - Install crontab FIXME..." >> ~/jasper-installer.log
-# Install crontab
-(crontab -u pi -l; echo '@reboot /home/pi/jasper/jasper.py') | sudo crontab -u pi -
+#echo "$(date) - Install crontab FIXME..." >> ~/jasper-installer.log
+## Install crontab
+#(crontab -u pi -l; echo '@reboot /home/pi/jasper/jasper.py') | sudo crontab -u pi -
 
 echo "$(date) - Reboot for jasper launch..." >> ~/jasper-installer.log
 # Reboot for jasper launch
