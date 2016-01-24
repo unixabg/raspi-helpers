@@ -24,15 +24,10 @@ sudo apt-get install vim git-core python-dev python-pip bison libasound2-dev lib
 echo "$(date) - Append PATH var and export LD_LIBRARY_PATH..." >> ~/jasper-installer.log
 # Append PATH var and export LD_LIBRARY_PATH
 cat <<EOT >> /home/pi/.bashrc
-LD_LIBRARY_PATH="/usr/local/lib"
-export LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 PATH=$PATH:/usr/local/lib/
 export PATH
 EOT
-
-echo "$(date) - Source in the .bashrc for the script..." >> ~/jasper-installer.log
-# Source in the .bashrc for the script
-. /home/pi/.bashrc
 
 echo "$(date) - Download and extract packages for STT..." >> ~/jasper-installer.log
 # Download and extract packages for STT
@@ -107,6 +102,8 @@ sudo cp ~/is2013-conversion/bin/phonetisaurus-g2p /usr/local/bin/phonetisaurus-g
 echo "$(date) - Completed building and installing is2013-conversion..." >> ~/jasper-installer.log
 
 echo "$(date) - Building g014b2b..." >> ~/jasper-installer.log
+echo "$(date) - Export the LD_LIBRARY_PATH for fstcompiler..." >> ~/jasper-installer.log
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 cd ~/g014b2b/
 ./compile-fst.sh
 cd
