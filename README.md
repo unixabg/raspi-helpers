@@ -17,6 +17,9 @@
 
 `~/jasper-installer.sh`
 
+##### Force audio to headphone jack ref: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=40872
+
+`sudo amixer cset numid=3 1`
 
 FIXME
 
