@@ -17,10 +17,6 @@ echo "$(date) - Update raspbian..." >> ~/jasper-installer.log
 sudo apt-get update
 sudo apt-get upgrade --yes
 
-echo "$(date) - Install the dependencies and some other packages..." >> ~/jasper-installer.log
-# Install the dependencies and some other packages
-sudo apt-get install vim git-core python-dev python-pip bison libasound2-dev libportaudio-dev python-pyaudio espeak subversion autoconf libtool automake gfortran g++ --yes
-
 echo "$(date) - Append PATH var and export LD_LIBRARY_PATH..." >> ~/jasper-installer.log
 # Append PATH var and export LD_LIBRARY_PATH
 cat <<EOT >> /home/pi/.bashrc
@@ -28,6 +24,10 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 PATH=$PATH:/usr/local/lib/
 export PATH
 EOT
+
+echo "$(date) - Install the dependencies and some other packages..." >> ~/jasper-installer.log
+# Install the dependencies and some other packages
+sudo apt-get install vim git-core python-dev python-pip bison libasound2-dev libportaudio-dev python-pyaudio espeak subversion autoconf libtool automake gfortran g++ --yes
 
 echo "$(date) - Download and extract packages for STT..." >> ~/jasper-installer.log
 # Download and extract packages for STT
