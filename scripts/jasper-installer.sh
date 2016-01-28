@@ -130,7 +130,7 @@ sed -i.bak -e's/plughw:1,0/plughw:0,0/' ~/jasper/client/tts.py
 
 echo "$(date) - Adjust the sound card defalut in alsa.conf..." >> ~/jasper-installer.log
 # Adjust the sound card defalut in alsa.conf
-sudo sed -i.bak -e's/defaults.ctl.card 0/defaults.ctl.card 1/' /usr/share/alsa/alsa.conf
+#sudo sed -i.bak -e's/defaults.ctl.card 0/defaults.ctl.card 1/' /usr/share/alsa/alsa.conf
 sudo sed -i.bak -e's/defaults.pcm.card 0/defaults.pcm.card 1/' /usr/share/alsa/alsa.conf
 
 echo "$(date) - Populate the ~/.jasper/FIXME..." >> ~/jasper-installer.log
