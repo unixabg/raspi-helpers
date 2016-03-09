@@ -208,7 +208,7 @@ echo "$(date) - Please remember to run the following to configure Jasper:"
 echo
 echo 'python ~/jasper/client/populate.py'
 echo
-echo 'Also pleare reboot your computer once for good measure.'
+echo 'Also please reboot your computer once for good measure.'
 echo 'Thanks for trying jasper-installer.sh script.'
 
 #echo "$(date) - Populate the ~/.jasper/FIXME..." >> ~/jasper-installer.log
