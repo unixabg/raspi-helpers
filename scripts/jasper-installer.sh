@@ -33,7 +33,7 @@ JasperTools () {
 	echo "$(date) - Called JasperTools..." >> ~/jasper-installer.log
 	echo "$(date) - Install the dependencies and some other packages..." >> ~/jasper-installer.log
 	# Install the dependencies and some other packages
-	sudo apt-get install vim git-core python-dev python-pip bison libasound2-dev libportaudio-dev python-pyaudio espeak subversion autoconf libtool automake gfortran g++ --yes
+	sudo apt-get install vim git-core python-dev python-pip bison libasound2-dev libportaudio-dev python-pyaudio espeak subversion autoconf libtool automake gfortran g++ libfst-dev libfst-tools libfst1 --yes
 }
 
 JasperLocal () {
@@ -43,11 +43,10 @@ JasperLocal () {
 	echo "$(date) - Download and extract packages for STT..." >> ~/jasper-installer.log
 	# Download and extract packages for STT
 	# The Pocketsphinx STT engine requires the MIT Language Modeling Toolkit,
-	# m2m-aligner, Phonetisaurus and OpenFST
+	# m2m-aligner, Phonetisaurus
 	cd ~
 	wget http://downloads.sourceforge.net/project/cmusphinx/sphinxbase/0.8/sphinxbase-0.8.tar.gz
 	wget http://downloads.sourceforge.net/project/cmusphinx/pocketsphinx/0.8/pocketsphinx-0.8.tar.gz
-	wget http://distfiles.macports.org/openfst/openfst-1.3.4.tar.gz
 	wget https://mitlm.googlecode.com/files/mitlm-0.4.1.tar.gz
 	wget https://m2m-aligner.googlecode.com/files/m2m-aligner-1.2.tar.gz
 	wget https://phonetisaurus.googlecode.com/files/is2013-conversion.tgz
@@ -56,7 +55,6 @@ JasperLocal () {
 	tar xvf sphinxbase-0.8.tar.gz
 	tar xvf pocketsphinx-0.8.tar.gz
 	tar xvf m2m-aligner-1.2.tar.gz
-	tar xvf openfst-1.3.4.tar.gz
 	tar xvf is2013-conversion.tgz
 	tar xvf mitlm-0.4.1.tar.gz
 	tar xvf g014b2b.tgz
@@ -82,14 +80,6 @@ JasperLocal () {
 	make -j2
 	sudo make install
 	echo "$(date) - Completed building and installing cmuclmtk..." >> ~/jasper-installer.log
-
-	# Install OpenFST
-	echo "$(date) - Building openfst-1.3.4..." >> ~/jasper-installer.log
-	cd ~/openfst-1.3.4/
-	./configure --enable-compact-fsts --enable-const-fsts --enable-far --enable-lookahead-fsts --enable-pdt
-	make
-	sudo make install
-	echo "$(date) - Completed building and installing openfst-1.3.4..." >> ~/jasper-installer.log
 
 	# Install M2M, MITLMT, Phonetisaurus and Phonetisaurus FST
 	echo "$(date) - Building m2m-aligner-1.2..." >> ~/jasper-installer.log
