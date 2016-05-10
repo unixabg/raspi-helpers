@@ -28,12 +28,27 @@ export PATH
 EOT
 }
 
-JasperTools () {
-	# Function to install Jasper tools
-	echo "$(date) - Called JasperTools..." >> ~/jasper-installer.log
-	echo "$(date) - Install the dependencies and some other packages..." >> ~/jasper-installer.log
-	# Install the dependencies and some other packages
-	sudo apt-get install vim git-core python-dev python-pip bison libasound2-dev libportaudio-dev python-pyaudio espeak subversion autoconf libtool automake gfortran g++ libfst-dev libfst-tools libfst1 --yes
+JasperBase () {
+	# Function to install Jasper base
+	echo "$(date) - Called JasperBase..." >> ~/jasper-installer.log
+	echo "$(date) - Checkout Jasper from git..." >> ~/jasper-installer.log
+	# Checkout Jasper from git
+	git clone https://github.com/jasperproject/jasper-client.git jasper
+	echo "$(date) - Install Jasper requirements..." >> ~/jasper-installer.log
+	# Install Jasper requirements
+	# First upgrade pip
+	sudo easy_install pip
+
+	# Now begin
+	cd ~
+	sudo pip install --upgrade setuptools
+	sudo pip install -r ~/jasper/client/requirements.txt
+	chmod +x jasper/jasper.py
+
+	echo "$(date) - Adding support for Google STT..." >> ~/jasper-installer.log
+	# Adding support for Google STT
+	sudo apt-get install python-pymad --yes
+	sudo pip install --upgrade gTTS
 }
 
 JasperLocal () {
@@ -111,34 +126,12 @@ JasperLocal () {
 	echo "$(date) - Completed building and installing g014b2b..." >> ~/jasper-installer.log
 }
 
-JasperBase () {
-	# Function to install Jasper base
-	echo "$(date) - Called JasperBase..." >> ~/jasper-installer.log
-	echo "$(date) - Checkout Jasper from git..." >> ~/jasper-installer.log
-	# Checkout Jasper from git
-	git clone https://github.com/jasperproject/jasper-client.git jasper
-	echo "$(date) - Install Jasper requirements..." >> ~/jasper-installer.log
-	# Install Jasper requirements
-	# First upgrade pip
-	sudo easy_install pip
-
-	# Now begin
-	cd ~
-	sudo pip install --upgrade setuptools
-	sudo pip install -r ~/jasper/client/requirements.txt
-	chmod +x jasper/jasper.py
-
-	echo "$(date) - Adding support for Google STT..." >> ~/jasper-installer.log
-	# Adding support for Google STT
-	sudo apt-get install python-pymad --yes
-	sudo pip install --upgrade gTTS
-}
-
-JasperVoice () {
-	# Function to install female voice for Jasper
-	echo "$(date) - Called JasperVoice..." >> ~/jasper-installer.log
-	echo "$(date) - Install svox tools for female voice..." >> ~/jasper-installer.log
-	sudo apt-get install libttspico-data libttspico-utils libttspico0 --yes
+JasperTools () {
+	# Function to install Jasper tools
+	echo "$(date) - Called JasperTools..." >> ~/jasper-installer.log
+	echo "$(date) - Install the dependencies and some other packages..." >> ~/jasper-installer.log
+	# Install the dependencies and some other packages
+	sudo apt-get install vim git-core python-dev python-pip bison libasound2-dev libportaudio-dev python-pyaudio espeak subversion autoconf libtool automake gfortran g++ libfst-dev libfst-tools libfst1 --yes
 }
 
 JasperTweaks () {
@@ -158,6 +151,14 @@ JasperTweaks () {
 	## Install crontab
 	#(crontab -u pi -l; echo '@reboot /home/pi/jasper/jasper.py') | sudo crontab -u pi -
 }
+
+JasperVoice () {
+	# Function to install female voice for Jasper
+	echo "$(date) - Called JasperVoice..." >> ~/jasper-installer.log
+	echo "$(date) - Install svox tools for female voice..." >> ~/jasper-installer.log
+	sudo apt-get install libttspico-data libttspico-utils libttspico0 --yes
+}
+
 
 _STT="NETWORK"
 
