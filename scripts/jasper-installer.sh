@@ -134,6 +134,13 @@ JasperBase () {
 	sudo pip install --upgrade gTTS
 }
 
+JasperVoice () {
+	# Function to install female voice for Jasper
+	echo "$(date) - Called JasperVoice..." >> ~/jasper-installer.log
+	echo "$(date) - Install svox tools for female voice..." >> ~/jasper-installer.log
+	sudo apt-get install libttspico-data libttspico-utils libttspico0 --yes
+}
+
 JasperTweaks () {
 	## Modify the CHUNK in jasper/client/mic.py
 	#sed -i.bak -e's/1024/768/' ~/jasper/client/mic.py
@@ -177,6 +184,29 @@ read _READ
 
 _STT=${_READ:-${_STT}}
 
+
+_SVOX="FEMALE"
+
+cat << EOF
+######################################################
+The installer script can install Jasper with a female
+voice for Text To Speech (TTS) support. By default the
+jasper-installer.sh script will assume you want a
+femal voice. If you want the regular Jasper male voice
+please answer the question accordingly.
+
+Select the desired voice for TTS support of (FEMALE or MALE)
+(default: ${_SVOX})
+
+EOF
+
+# Ask for _SVOX
+echo -n ": "
+read _READ
+
+_SVOX=${_READ:-${_SVOX}}
+
+
 Defaults
 JasperTools
 JasperBase
@@ -188,6 +218,16 @@ then
 	JasperLocal
 else
 	echo "$(date) - User selected NETWORK STT option..." >> ~/jasper-installer.log
+fi
+
+# Here we include the voice for TTS
+if [ "${_SVOX}" = "MALE" ]
+then
+	echo "$(date) - User selected MALE TTS voice..." >> ~/jasper-installer.log
+	JasperVoice
+else
+	# Here we default to FEMALE for everything else entered.
+	echo "$(date) - User selected FEMALE TTS voice..." >> ~/jasper-installer.log
 fi
 
 JasperTweaks
