@@ -225,10 +225,10 @@ fi
 if [ "${_SVOX}" = "MALE" ]
 then
 	echo "$(date) - User selected MALE TTS voice..." >> ~/jasper-installer.log
-	JasperVoice
 else
 	# Here we default to FEMALE for everything else entered.
 	echo "$(date) - User selected FEMALE TTS voice..." >> ~/jasper-installer.log
+	JasperVoice
 fi
 
 JasperTweaks
