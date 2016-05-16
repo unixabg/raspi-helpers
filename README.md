@@ -11,7 +11,7 @@
 
 `wget https://raw.githubusercontent.com/unixabg/raspi-helpers/master/scripts/jasper-installer.sh`
 
-- Make the script you just downloaded executabl with the below command:
+- Make the script you just downloaded executable with the below command:
 
 `chmod +x jasper-installer.sh`
 
