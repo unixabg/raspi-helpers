@@ -15,7 +15,7 @@
 
 `chmod +x jasper-installer.sh`
 
-- Launch the script and this can take several hours
+- Launch the script and this can take several hours:
 
 `~/jasper-installer.sh`
 
