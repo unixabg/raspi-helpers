@@ -62,9 +62,9 @@ JasperLocal () {
 	cd ~
 	wget http://downloads.sourceforge.net/project/cmusphinx/sphinxbase/0.8/sphinxbase-0.8.tar.gz
 	wget http://downloads.sourceforge.net/project/cmusphinx/pocketsphinx/0.8/pocketsphinx-0.8.tar.gz
-	wget https://mitlm.googlecode.com/files/mitlm-0.4.1.tar.gz
-	wget https://m2m-aligner.googlecode.com/files/m2m-aligner-1.2.tar.gz
-	wget https://phonetisaurus.googlecode.com/files/is2013-conversion.tgz
+	wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mitlm/mitlm-0.4.1.tar.gz
+	wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/m2m-aligner/m2m-aligner-1.2.tar.gz
+	wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/phonetisaurus/is2013-conversion.tgz
 	wget https://www.dropbox.com/s/kfht75czdwucni1/g014b2b.tgz
 	svn co https://svn.code.sf.net/p/cmusphinx/code/trunk/cmuclmtk/
 	tar xvf sphinxbase-0.8.tar.gz
