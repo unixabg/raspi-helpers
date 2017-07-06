@@ -21,6 +21,9 @@ if [ "$1" == "--install" ]; then
 
 	if [[ $confirm =~ ^([yY][eE][sS]|[yY])$ ]]
 	then
+		echo "Updating and installing some packages."
+		sudo apt-get update
+		sudo apt-get install cups libavahi-client-dev libcups2-dev bzr git
 		echo "Making a scratch-gcp directory."
 		mkdir ~/scratch-gcp
 		cd ~/scratch-gcp
@@ -32,8 +35,12 @@ if [ "$1" == "--install" ]; then
 		echo "Attempting to install go."
 		~/scratch-gcp/goinstall.sh --arm
 
-		echo "Sourcing in .bashrc after go install."
-		. ~/.bashrc
+		echo "Setting some environmental variables for go."
+		# GoLang
+		export GOROOT=$HOME/.go
+		export PATH=$PATH:$GOROOT/bin
+		export GOPATH=$HOME/go
+		export PATH=$PATH:$GOPATH/bin
 
 		echo "Attempting to build the Google Cloud Print connector utility, gcp-connector-util."
 		go get github.com/google/cloud-print-connector/gcp-connector-util
@@ -54,6 +61,7 @@ if [ "$1" == "--install" ]; then
 		echo "Creating crontab."
 		echo "Collecting current cron information."
 		echo "Making original cron backup."
+		echo "# Sanity for empty crontab" | crontab -
 		crontab -l > ~/gcp/original.cron
 		crontab -l > ~/gcp/gcp.cron
 		echo "Adding gcp for startup on reboot."
@@ -76,10 +84,12 @@ if [ "$1" == "--install" ]; then
 		exit 0
 	fi
 elif [ "$1" == "--remove" ]; then
-	echo "FIXME --remove."
+	echo "Attempting --remove."
 	if [ -d "$HOME/gcp" ]; then
-		echo "Attempting to restore original cron."
-		crontab ~/gcp/original.cron
+		if [ -f /scripts/alert ]; then
+			echo "Attempting to restore original cron."
+			crontab ~/gcp/original.cron
+		fi
 
 		echo "Removing gcp directory."
 		rm -rf ~/gcp
